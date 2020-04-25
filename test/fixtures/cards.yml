@@ -1,0 +1,33 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: Test one
+  slot_1: a
+  slot_2: b
+  slot_3: c
+  slot_4: d
+  slot_5: e
+  slot_6: f
+  slot_7: g
+  slot_8: h
+  slot_9: i
+  slot_10: j
+  slot_11: k
+  slot_12: l
+  notes: notes one
+
+two:
+  title: Test two
+  slot_1: m
+  slot_2: o
+  slot_3: p
+  slot_4: q
+  slot_5: r
+  slot_6: s
+  slot_7: t
+  slot_8: u
+  slot_9: v
+  slot_10: w
+  slot_11: x
+  slot_12: z
+  notes: notes two

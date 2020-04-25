@@ -1,0 +1,86 @@
+<%= form_with(model: card, local: true) do |form| %>
+  <% if card.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(card.errors.count, "error") %> prohibited this card from being saved:</h2>
+
+      <ul>
+        <% card.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :slot_1 %>
+    <%= form.text_field :slot_1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :slot_2 %>
+    <%= form.text_field :slot_2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :slot_3 %>
+    <%= form.text_field :slot_3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :slot_4 %>
+    <%= form.text_field :slot_4 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :slot_5 %>
+    <%= form.text_field :slot_5 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :slot_6 %>
+    <%= form.text_field :slot_6 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :slot_7 %>
+    <%= form.text_field :slot_7 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :slot_8 %>
+    <%= form.text_field :slot_8 %>
+  </div>
+  <div class="field">
+    <%= form.label :slot_9 %>
+    <%= form.text_field :slot_9 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :slot_10 %>
+    <%= form.text_field :slot_10 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :slot_11 %>
+    <%= form.text_field :slot_11 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :slot_12 %>
+    <%= form.text_field :slot_12 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_field :notes %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
