@@ -10,5 +10,14 @@
   <%= @game.locator %>
 </p>
 
+<p>
+  <strong>Cards:</strong>
+  <ul>
+    <% @game.cards.each do |c| %>
+       <li><%= c.title %></li>
+    <% end %>
+  </ul>
+</p>
+
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %>

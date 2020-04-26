@@ -21,6 +21,10 @@
     <%= form.text_field :locator %>
   </div>
 
+  <div class="cards">
+    <%= form.collection_check_boxes :card_ids, Card.all, :id, :title %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

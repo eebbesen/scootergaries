@@ -14,11 +14,9 @@
   <tbody>
     <% @games.each do |game| %>
       <tr>
-        <td><%= game.title %></td>
+        <td><%= link_to game.title, game %></td>
         <td><%= game.locator %></td>
-        <td><%= link_to 'Show', game %></td>
         <td><%= link_to 'Edit', edit_game_path(game) %></td>
-        <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
