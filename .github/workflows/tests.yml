@@ -2,7 +2,7 @@ env:
   RUBY_VERSION: 2.7
 
 name: Rails tests
-on: [push,pull_request]
+on: [pull_request]
 jobs:
   rubocop:
     name: rubocop
@@ -18,7 +18,7 @@ jobs:
         run: rubocop
 
   unit_tests:
-    name: rubocop
+    name: unit tests
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v1
@@ -33,7 +33,7 @@ jobs:
         run: bundle exec rake
 
   system_tests:
-    name: rubocop
+    name: system tests
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v1
