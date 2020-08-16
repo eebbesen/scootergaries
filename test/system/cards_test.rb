@@ -29,7 +29,7 @@ class CardsTest < ApplicationSystemTestCase
     fill_in 'Slot 7', with: @card.slot_7
     fill_in 'Slot 8', with: @card.slot_8
     fill_in 'Slot 9', with: @card.slot_9
-    fill_in 'Title', with: @card.title
+    fill_in 'Title', with: @card.title + ('a'..'z').sort_by { rand }[0,10].join
     click_on 'Create Card'
 
     assert_text 'Card was successfully created'
@@ -38,7 +38,9 @@ class CardsTest < ApplicationSystemTestCase
 
   test 'updating a Card' do
     visit cards_url
-    click_on 'Edit', match: :first
+    click_on @card.title, match: :first
+
+    click_on 'Edit'
 
     fill_in 'Notes', with: @card.notes
     fill_in 'Slot 1', with: @card.slot_1
@@ -58,14 +60,5 @@ class CardsTest < ApplicationSystemTestCase
 
     assert_text 'Card was successfully updated'
     click_on 'Back'
-  end
-
-  test 'destroying a Card' do
-    visit cards_url
-    page.accept_confirm do
-      click_on 'Destroy', match: :first
-    end
-
-    assert_text 'Card was successfully destroyed'
   end
 end

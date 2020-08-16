@@ -26,6 +26,8 @@ class GamesTest < ApplicationSystemTestCase
 
   test 'updating a Game' do
     visit games_url
+    click_on 'first'
+
     click_on 'Edit', match: :first
 
     fill_in 'Locator', with: @game.locator
@@ -34,14 +36,5 @@ class GamesTest < ApplicationSystemTestCase
 
     assert_text 'Game was successfully updated'
     click_on 'Back'
-  end
-
-  test 'destroying a Game' do
-    visit games_url
-    page.accept_confirm do
-      click_on 'Destroy', match: :first
-    end
-
-    assert_text 'Game was successfully destroyed'
   end
 end
