@@ -55,5 +55,10 @@ jobs:
         run: |
           gem install bundler
           bundle install
+      - name: project setup
+        run: |
+           yarn install --check-files
+           bin/rails webpacker:install
+           bin/rake db:setup
       - name: run tests
         run: bin/rails test:system
