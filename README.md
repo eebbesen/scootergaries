@@ -12,3 +12,8 @@ bin/rails db:seed # add legacy cards
 ```bash
 bin/rails s
 ```
+
+### Test
+```bash
+bin/rails test
+```
