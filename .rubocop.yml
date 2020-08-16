@@ -1,0 +1,20 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - 'node_modules/**/*'
+  NewCops: enable
+
+Layout/LineLength:
+  Exclude:
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'test/**/*'
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - 'db/migrate/*'

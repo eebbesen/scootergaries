@@ -14,6 +14,12 @@ bin/rails s
 ```
 
 ### Test
+Unit tests
 ```bash
 bin/rails test
+```
+
+System tests
+```bash
+bin/rails test:system
 ```

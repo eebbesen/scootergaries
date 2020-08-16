@@ -1,4 +1,8 @@
-ENV['RAILS_ENV'] ||= 'test'
+# frozen_string_literal: true
+
+require 'simplecov'
+SimpleCov.start
+
 require_relative '../config/environment'
 require 'rails/test_help'
 
