@@ -14,9 +14,18 @@
   <strong>Cards:</strong>
   <ul>
     <% @game.cards.each do |c| %>
-       <li><%= c.title %></li>
+       <li><%= link_to c.title, c %></li>
     <% end %>
   </ul>
+</p>
+
+<p>
+  <h3>Players</h3>
+  <% @game.players.each do |game| %>
+    <tr>
+      <td><%= link_to player.name, player %></td>
+    </tr>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_game_path(@game) %> |
