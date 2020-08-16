@@ -29,7 +29,7 @@ class CardsTest < ApplicationSystemTestCase
     fill_in 'Slot 7', with: @card.slot_7
     fill_in 'Slot 8', with: @card.slot_8
     fill_in 'Slot 9', with: @card.slot_9
-    fill_in 'Title', with: @card.title + ('a'..'z').sort_by { rand }[0,10].join
+    fill_in 'Title', with: @card.title + ('a'..'z').sort_by { rand }[0, 10].join
     click_on 'Create Card'
 
     assert_text 'Card was successfully created'
