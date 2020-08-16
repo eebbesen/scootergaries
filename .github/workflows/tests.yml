@@ -1,0 +1,48 @@
+env:
+  RUBY_VERSION: 2.7
+
+name: Rails tests
+on: [push,pull_request]
+jobs:
+  rubocop:
+    name: rubocop
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+      - name: install rubocop
+        run: gem install rubocop
+      - name: run rubocop
+        run: rubocop
+
+  unit_tests:
+    name: rubocop
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+      - name: install bundler and bundle install
+        run: |
+          gem install bundler
+          bundle install
+      - name: run tests
+        run: bundle exec rake
+
+  system_tests:
+    name: rubocop
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+      - name: install bundler and bundle install
+        run: |
+          gem install bundler
+          bundle install
+      - name: run tests
+        run: bin/rails test:system
