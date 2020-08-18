@@ -2,12 +2,14 @@ require 'test_helper'
 
 class PlayControllerTest < ActionDispatch::IntegrationTest
   test 'should get play with existing game' do
-    get play_play_url('hbenv')
+    @game = games(:one)
+    get play_join_url(@game.locator)
     assert_response :success
   end
 
   test 'should get play with non-exant game' do
-    get play_play_url('abczzzz')
+    @game = games(:one)
+    get play_join_url("#{@game.locator}#{@game.locator}")
     assert_response :success
   end
 

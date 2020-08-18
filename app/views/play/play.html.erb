@@ -1,3 +1,7 @@
-<h1><%= @game.title if @game %></h1>
-
 <p id="notice" class="alert-warning"><%= notice %></p>
+
+<h1><%= @game.title %> | <%= @player.name %></h1>
+
+<% @game.cards.each do |c| %>
+  <%= c.title %>
+<% end %>

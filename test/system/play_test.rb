@@ -8,12 +8,15 @@ class PlayTest < ApplicationSystemTestCase
   end
 
   test 'game exists' do
-    visit play_play_url @game.locator
+    visit play_join_url @game.locator
+
+    fill_in 'Name', with: 'User123'
+    click_on 'Join'
   end
 
   test 'game does not exist' do
     bad_locator = @game.locator + 'bad'
-    visit play_play_url(bad_locator)
+    visit play_join_url(bad_locator)
 
     assert_text "Game #{bad_locator} does not exist"
   end

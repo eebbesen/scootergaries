@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'play/:locator', to: 'play#play', as: 'play_play'
+  post 'play/play', to: 'play#play', as: 'play_play'
+  get 'play/:locator',  to: 'play#join', as: 'play_join'
   resources :players
   resources :games
   resources :cards
