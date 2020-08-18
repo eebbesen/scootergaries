@@ -16,8 +16,8 @@ class GamesTest < ApplicationSystemTestCase
     Capybara.using_wait_time(10) do
       visit games_url
       click_on 'New Game'
-      fill_in 'Title', with: @game.title + 'b'
-      fill_in 'Locator', with: @game.locator + 'a'
+      fill_in 'Title', with: "#{@game.title}b"
+      fill_in 'Locator', with: "#{@game.locator}a"
       click_on 'Create Game'
 
       assert_text 'Game was successfully created'
