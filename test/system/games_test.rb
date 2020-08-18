@@ -13,28 +13,31 @@ class GamesTest < ApplicationSystemTestCase
   end
 
   test 'creating a Game' do
-    visit games_url
-    click_on 'New Game'
+    Capybara.using_wait_time(10) do
+      visit games_url
+      click_on 'New Game'
+      fill_in 'Title', with: @game.title + 'b'
+      fill_in 'Locator', with: @game.locator + 'a'
+      click_on 'Create Game'
 
-    fill_in 'Locator', with: @game.locator
-    fill_in 'Title', with: @game.title
-    click_on 'Create Game'
-
-    assert_text 'Game was successfully created'
-    click_on 'Back'
+      assert_text 'Game was successfully created'
+      click_on 'Back'
+    end
   end
 
   test 'updating a Game' do
-    visit games_url
-    click_on 'first'
+    Capybara.using_wait_time(10) do
+      visit games_url
+      click_on 'first'
 
-    click_on 'Edit', match: :first
+      click_on 'Edit', match: :first
 
-    fill_in 'Locator', with: @game.locator
-    fill_in 'Title', with: @game.title
-    click_on 'Update Game'
+      fill_in 'Title', with: @game.title
+      fill_in 'Locator', with: @game.locator
+      click_on 'Update Game'
 
-    assert_text 'Game was successfully updated'
-    click_on 'Back'
+      assert_text 'Game was successfully updated'
+      click_on 'Back'
+    end
   end
 end
