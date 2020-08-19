@@ -2,5 +2,12 @@
 <h1><%= @game.title %> | <%= @player.name %> | <%= session.id %> </h1>
 
 <% @game.cards.each do |c| %>
-  <%= c.title %>
+  <div class="carda">
+    <h2><%= c.title %></h2>
+    <ol>
+      <% c.fields.each do |f| %>
+        <li><%= f %></li>
+      <% end %>
+    <ol>
+  </div>
 <% end %>

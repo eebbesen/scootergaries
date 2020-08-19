@@ -6,69 +6,15 @@
 </p>
 
 <p>
-  <strong>1:</strong>
-  <%= @card.slot_1 %>
-</p>
-
-<p>
-  <strong>2:</strong>
-  <%= @card.slot_2 %>
-</p>
-
-<p>
-  <strong>3:</strong>
-  <%= @card.slot_3 %>
-</p>
-
-<p>
-  <strong>4:</strong>
-  <%= @card.slot_4 %>
-</p>
-
-<p>
-  <strong>5:</strong>
-  <%= @card.slot_5 %>
-</p>
-
-<p>
-  <strong>6:</strong>
-  <%= @card.slot_6 %>
-</p>
-
-<p>
-  <strong>7:</strong>
-  <%= @card.slot_7 %>
-</p>
-
-<p>
-  <strong>8:</strong>
-  <%= @card.slot_8 %>
-</p>
-
-<p>
-  <strong>9:</strong>
-  <%= @card.slot_9 %>
-</p>
-
-<p>
-  <strong>10:</strong>
-  <%= @card.slot_10 %>
-</p>
-
-<p>
-  <strong>11:</strong>
-  <%= @card.slot_11 %>
-</p>
-
-<p>
-  <strong>12:</strong>
-  <%= @card.slot_12 %>
-</p>
-
-<p>
   <strong>Notes:</strong>
   <%= @card.notes %>
 </p>
+
+<ol>
+  <% @card.fields.each do |f| %>
+    <li><%= f %></li>
+  <% end %>
+</ol>
 
 <%= link_to 'Edit', edit_card_path(@card) %> |
 <%= link_to 'Back', cards_path %>
