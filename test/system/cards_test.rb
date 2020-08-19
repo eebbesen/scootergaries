@@ -4,7 +4,7 @@ require 'application_system_test_case'
 
 class CardsTest < ApplicationSystemTestCase
   setup do
-    @card = cards(:one)
+    @card = cards(:cards_one)
   end
 
   test 'visiting the index' do

@@ -1,0 +1,13 @@
+<p id="notice" class="alert-warning"><%= notice %></p>
+<h1><%= @game.title %> | <%= @player.name %> | <%= session.id %> </h1>
+
+<% @game.cards.each do |c| %>
+  <div class="carda">
+    <h2><%= c.title %></h2>
+    <ol>
+      <% c.fields.each do |f| %>
+        <li><%= f %></li>
+      <% end %>
+    <ol>
+  </div>
+<% end %>

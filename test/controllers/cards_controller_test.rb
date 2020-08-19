@@ -4,7 +4,7 @@ require 'test_helper'
 
 class CardsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @card = cards(:one)
+    @card = cards(:cards_one)
   end
 
   test 'should get index' do
