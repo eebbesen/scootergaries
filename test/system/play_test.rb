@@ -17,7 +17,7 @@ class PlayTest < ApplicationSystemTestCase
   end
 
   test 'game does not exist' do
-    bad_locator = @game.locator + 'bad'
+    bad_locator = "#{@game.locator}bad"
     visit play_join_url(bad_locator)
 
     assert_text "Game #{bad_locator} does not exist"
@@ -45,7 +45,6 @@ class PlayTest < ApplicationSystemTestCase
   test 'game and player exist' do
     GamePlayer.create(name: 'User123', game: @game, session_id: 'abcd1234').save!
     assert_difference('GamePlayer.count', 0) do
-
       visit play_join_url @game.locator
 
       assert_text @game.cards.first.title
@@ -56,7 +55,6 @@ class PlayTest < ApplicationSystemTestCase
     old_game = games(:two)
     GamePlayer.create(name: 'User123', game_id: old_game.id, session_id: 'abcd1234').save!
     assert_difference('GamePlayer.count', 1) do
-
       visit play_join_url @game.locator
 
       fill_in 'Name', with: 'User123'

@@ -12,7 +12,7 @@ class PlayController < ApplicationController
 
       if @player.name
         render 'play'
-        return
+        nil
       end
     else
       flash.now[:notice] = "Game #{params[:locator]} does not exist"
