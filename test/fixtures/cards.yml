@@ -1,6 +1,6 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+cards_one:
   title: Test one
   slot_1: a
   slot_2: b
@@ -16,7 +16,7 @@ one:
   slot_12: l
   notes: notes one
 
-two:
+cards_two:
   title: Test two
   slot_1: m
   slot_2: o

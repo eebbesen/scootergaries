@@ -21,7 +21,7 @@
 
 <p>
   <h3>Players</h3>
-  <% @game.players.each do |game| %>
+  <% @game.game_players.each do |game| %>
     <tr>
       <td><%= link_to player.name, player %></td>
     </tr>

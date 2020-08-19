@@ -1,6 +1,5 @@
 <p id="notice" class="alert-warning"><%= notice %></p>
-
-<h1><%= @game.title %> | <%= @player.name %></h1>
+<h1><%= @game.title %> | <%= @player.name %> | <%= session.id %> </h1>
 
 <% @game.cards.each do |c| %>
   <%= c.title %>
