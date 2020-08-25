@@ -49,6 +49,8 @@ class PlayTest < ApplicationSystemTestCase
       visit play_join_url @game.locator
 
       assert_text @game.cards.first.title
+      assert_text 'User123'
+      assert_no_text 'Join'
     end
   end
 
