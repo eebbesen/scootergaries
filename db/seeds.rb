@@ -273,5 +273,4 @@ inactive_game.cards.push Card.last
 
 player = GamePlayer.create(game: default_game, name: 'Omar')
 
-game_player_card = GamePlayerCard.create(game_player: player, card: Card.find(default_game.active_card_id))
-
+GamePlayerCard.create(game_player: player, card: Card.find(default_game.active_card_id))

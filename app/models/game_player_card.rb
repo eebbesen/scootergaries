@@ -17,7 +17,7 @@ class GamePlayerCard < ApplicationRecord
          AND g.active_card_id = gpc.card_id
     SQL
 
-    game_player_card = GamePlayerCard.find_by_sql([sql, player_id: player_id, game_id: game_id]).first
+    game_player_card = GamePlayerCard.find_by_sql([sql, { player_id: player_id, game_id: game_id }]).first
 
     unless game_player_card
       @game = Game.find game_id

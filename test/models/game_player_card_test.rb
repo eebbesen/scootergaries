@@ -37,5 +37,4 @@ class GamePlayerCardsTest < ActiveSupport::TestCase
       assert_equal @game.active_card_id, found_gpc.card_id
     end
   end
-
 end

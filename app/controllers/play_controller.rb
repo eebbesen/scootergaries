@@ -32,9 +32,7 @@ class PlayController < ApplicationController
     @player.save!
   end
 
-  def answer
-
-  end
+  def answer; end
 
   private
 
