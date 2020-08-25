@@ -263,3 +263,15 @@ Card.create(title: 'Legacy List 16',
             slot_11: 'found in new york city',
             slot_12: 'things in fairy tales',
             notes: '')
+
+default_game = Game.create(title: 'Default Game', locator: 'hbenv', active: true)
+Card.all.each { |c| default_game.cards.push c }
+default_game.active_card_id = default_game.cards.first.id
+
+inactive_game = Game.create(title: 'Inactive Game', locator: 'imdone', active: false)
+inactive_game.cards.push Card.last
+
+player = GamePlayer.create(game: default_game, name: 'Omar')
+
+game_player_card = GamePlayerCard.create(game_player: player, card: Card.find(default_game.active_card_id))
+

@@ -14,6 +14,7 @@ class PlayTest < ApplicationSystemTestCase
   setup do
     @game = games(:one)
     @game.cards.push cards(:cards_one)
+    @game.update_attribute(:active_card_id, @game.cards.first.id)
   end
 
   test 'game does not exist' do
@@ -53,7 +54,8 @@ class PlayTest < ApplicationSystemTestCase
 
   test 'game exists and player exists with same session for different game' do
     old_game = games(:two)
-    GamePlayer.create(name: 'User123', game_id: old_game.id, session_id: 'abcd1234').save!
+    old_game.cards.push cards(:cards_two)
+    GamePlayer.create(name: 'User123', game: old_game, session_id: 'abcd1234').save!
     assert_difference('GamePlayer.count', 1) do
       visit play_join_url @game.locator
 

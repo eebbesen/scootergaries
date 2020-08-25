@@ -2,12 +2,24 @@
 <h1><%= @game.title %> | <%= @player.name %> | <%= session.id %> </h1>
 
 <% @game.cards.each do |c| %>
-  <div class="carda">
+  <div>
     <h2><%= c.title %></h2>
-    <ol>
-      <% c.fields.each do |f| %>
-        <li><%= f %></li>
+    <% if @game_player_card %>
+      <%= form_with(url: play_answer_path(@game_player_card.id)) do |form| %>
+        <% c.fields.each_with_index do |f, i| %>
+          <div class="field">
+            <%= form.label f %>
+            <%= form.text_field "slot_#{i + 1}" %>
+          </div>
+        <% end %>
+        <div class="actions">
+          <%= form.submit 'Submit Answers' %>
+        </div>
       <% end %>
-    <ol>
+    <% else %>
+      <h2>Pick a card</h2>
+    <% end %>
+    <%= hidden_field_tag(:game_id, @game.id) %>
+    <%= hidden_field_tag(:player_id, @player.id) %>
   </div>
 <% end %>
