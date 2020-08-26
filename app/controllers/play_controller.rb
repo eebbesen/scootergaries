@@ -24,7 +24,7 @@ class PlayController < ApplicationController
     @player.save!
   end
 
-  def answer
+  def entries
     # confirm session.id
     @game_player_card = GamePlayerCard.find params[:game_player_card_id]
     return unless session_id == @game_player_card.game_player.session_id
@@ -32,7 +32,7 @@ class PlayController < ApplicationController
     @game_player_card.attributes = game_player_card_params
     @game_player_card.save!
 
-    flash.now[:notice] = 'Answers saved'
+    flash.now[:notice] = "Answers saved at #{DateTime.now.strftime('%I:%M:%S %p')}"
 
     @game = @game_player_card.game_player.game
     @player = @game_player_card.game_player
