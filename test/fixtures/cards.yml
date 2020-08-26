@@ -2,18 +2,18 @@
 
 cards_one:
   title: Test one
-  slot_1: a
-  slot_2: b
-  slot_3: c
-  slot_4: d
-  slot_5: e
-  slot_6: f
-  slot_7: g
-  slot_8: h
-  slot_9: i
-  slot_10: j
-  slot_11: k
-  slot_12: l
+  slot_1: anthems
+  slot_2: balloons
+  slot_3: chilis
+  slot_4: dogs
+  slot_5: eggs
+  slot_6: fads
+  slot_7: groceries
+  slot_8: houses
+  slot_9: indeces
+  slot_10: jellos
+  slot_11: knits
+  slot_12: legumes
   notes: notes one
 
 cards_two:

@@ -3,27 +3,40 @@
 class PlayController < ApplicationController
   def join
     @game = Game.where(locator: params[:locator]).first
+    return unless join_check
 
-    if @game
-      player_check
+    @player = GamePlayer.find_or_make(@game.id, session_id)
+    return unless @player.name
 
-      if @player.name
-        render 'play'
-        nil
-      end
-    else
-      flash.now[:notice] = "Game #{params[:locator]} does not exist"
-    end
+    @game_player_card = GamePlayerCard.find_or_make(@player.id, @game.id)
+    render 'play'
+    nil
   end
 
   def play
     @game = Game.find(params[:game_id])
     @player = GamePlayer.find(params[:player_id])
+    @game_player_card = GamePlayerCard.find_or_make(@player.id, @game.id)
 
     return if @player.name
 
     @player.name = params[:name]
     @player.save!
+  end
+
+  def answer
+    # confirm session.id
+    @game_player_card = GamePlayerCard.find params[:game_player_card_id]
+    return unless session_id == @game_player_card.game_player.session_id
+
+    @game_player_card.attributes = game_player_card_params
+    @game_player_card.save!
+
+    flash.now[:notice] = 'Answers saved'
+
+    @game = @game_player_card.game_player.game
+    @player = @game_player_card.game_player
+    render :play
   end
 
   private
@@ -34,14 +47,17 @@ class PlayController < ApplicationController
     session.id.to_s
   end
 
-  def player_check
-    @player = GamePlayer.where(
-      session_id: session_id,
-      game_id: @game.id
-    ).first_or_create
+  # validation
+  def join_check
+    unless @game
+      flash.now[:notice] = "Game #{params[:locator]} does not exist"
+      return false
+    end
+    true
+  end
 
-    @player.save! unless @player.persisted?
-
-    @player
+  # Only allow a list of trusted parameters through.
+  def game_player_card_params
+    params.permit(:slot_1, :slot_2, :slot_3, :slot_4, :slot_5, :slot_6, :slot_7, :slot_8, :slot_9, :slot_10, :slot_11, :slot_12, :locator)
   end
 end

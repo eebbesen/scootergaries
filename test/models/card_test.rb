@@ -16,7 +16,7 @@ class CardTest < ActiveSupport::TestCase
 
     fs = c.fields
     assert_equal 12, fs.count
-    assert_equal 'a', fs.first
-    assert_equal 'l', fs.last
+    assert_equal 'anthems', fs.first
+    assert_equal 'legumes', fs.last
   end
 end
