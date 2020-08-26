@@ -3,21 +3,14 @@
 class PlayController < ApplicationController
   def join
     @game = Game.where(locator: params[:locator]).first
+    return nil unless join_check
 
-    if @game
-      @player = GamePlayer.find_or_make(@game.id, session_id)
+    @player = GamePlayer.find_or_make(@game.id, session_id)
 
-      if @game.active_card_id
-        if @player.name
-          @game_player_card = GamePlayerCard.find_or_make(@player.id, @game.id)
-          render 'play'
-          nil
-        end
-      else
-        flash.now[:notice] = "Game #{params[:locator]} does not have an active card"
-      end
-    else
-      flash.now[:notice] = "Game #{params[:locator]} does not exist"
+    if @player.name
+      @game_player_card = GamePlayerCard.find_or_make(@player.id, @game.id)
+      render 'play'
+      nil
     end
   end
 
@@ -49,6 +42,15 @@ class PlayController < ApplicationController
   # but overridden in the system test
   def session_id
     session.id.to_s
+  end
+
+  # validation
+  def join_check
+    unless @game
+      flash.now[:notice] = "Game #{params[:locator]} does not exist"
+      return false
+    end
+    true
   end
 
   # Only allow a list of trusted parameters through.
