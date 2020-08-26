@@ -33,6 +33,10 @@ class PlayController < ApplicationController
     @game_player_card.save!
 
     flash.now[:notice] = 'Answers saved'
+
+    @game = @game_player_card.game_player.game
+    @player = @game_player_card.game_player
+    render :play
   end
 
   private

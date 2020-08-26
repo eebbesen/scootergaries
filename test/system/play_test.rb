@@ -62,6 +62,7 @@ class PlayTest < ApplicationSystemTestCase
 
       assert_equal 'icicles', find('#slot_3').value
       assert_equal 'icicles', gp.game_player_cards.first.slot_3
+      assert_text 'Answers saved'
     end
   end
 
