@@ -44,7 +44,7 @@ class PlayTest < ApplicationSystemTestCase
   end
 
   test 'game and player exist' do
-    GamePlayer.create(name: 'User123', game: @game, session_id: 'abcd1234').save!
+    GamePlayer.create(name: 'User123', game: @game, session_id: 'abcd1234')
     assert_difference('GamePlayer.count', 0) do
       visit play_join_url @game.locator
 
@@ -53,11 +53,24 @@ class PlayTest < ApplicationSystemTestCase
       assert_no_text 'Join'
     end
   end
+#
+  test 'enter answers' do
+    gp = GamePlayer.create(name: 'User123', game: @game, session_id: 'abcd1234')
+    assert_difference('GamePlayer.count', 0) do
+      visit play_join_url @game.locator
+      fill_in 'slot_3', with: 'icicles'
+      click_on 'Submit Answers'
+
+      assert_equal 'icicles', find('#slot_3').value
+      byebug
+      assert_equal 'icicles', gp.game_player_cards.first.slot_3
+    end
+  end
 
   test 'game exists and player exists with same session for different game' do
     old_game = games(:two)
     old_game.cards.push cards(:cards_two)
-    GamePlayer.create(name: 'User123', game: old_game, session_id: 'abcd1234').save!
+    GamePlayer.create(name: 'User123', game: old_game, session_id: 'abcd1234')
     assert_difference('GamePlayer.count', 1) do
       visit play_join_url @game.locator
 
@@ -65,6 +78,9 @@ class PlayTest < ApplicationSystemTestCase
       click_on 'Join Game'
 
       assert_text @game.cards.first.title
+
+      gp = GamePlayer.last
+      assert_equal 'User123', gp.name
     end
   end
 end

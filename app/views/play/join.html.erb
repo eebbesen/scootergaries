@@ -4,7 +4,7 @@
     <% if @game.active_card_id %>
       <div class="field">
         <% if @player.name %>
-          <h2><%= @player.name %>
+          <h2><%= @player.name %></h2>
         <% else %>
           <%= form.label :name %>
           <%= form.text_field :name %>

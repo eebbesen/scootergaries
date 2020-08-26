@@ -32,7 +32,17 @@ class PlayController < ApplicationController
     @player.save!
   end
 
-  def answer; end
+  def answer
+    # confirm session.id
+    @game_player_card = GamePlayerCard.find params[:game_player_card_id]
+    return unless session_id == @game_player_card.game_player.session_id
+
+    @game_player_card.attributes = game_player_card_params
+    @game_player_card.save!
+
+    flash.now[:notice] = "Answers saved"
+    flash[:notice] = "Answers saved"
+  end
 
   private
 
@@ -40,5 +50,10 @@ class PlayController < ApplicationController
   # but overridden in the system test
   def session_id
     session.id.to_s
+  end
+
+  # Only allow a list of trusted parameters through.
+  def game_player_card_params
+    params.permit(:slot_1, :slot_2, :slot_3, :slot_4, :slot_5, :slot_6, :slot_7, :slot_8, :slot_9, :slot_10, :slot_11, :slot_12, :locator)
   end
 end

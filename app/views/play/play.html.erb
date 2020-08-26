@@ -5,11 +5,11 @@
   <div>
     <h2><%= c.title %></h2>
     <% if @game_player_card %>
-      <%= form_with(url: play_answer_path(@game_player_card.id)) do |form| %>
+      <%= form_with(local: true, url: play_answer_path(@game_player_card.id)) do |form| %>
         <% c.fields.each_with_index do |f, i| %>
           <div class="field">
             <%= form.label f %>
-            <%= form.text_field "slot_#{i + 1}" %>
+            <%= form.text_field "slot_#{i + 1}", value: @game_player_card.send("slot_#{i + 1}".to_sym) %>
           </div>
         <% end %>
         <div class="actions">

@@ -3,7 +3,7 @@
 ## Player in a game context
 class GamePlayer < ApplicationRecord
   belongs_to :game
-  has_many :game_player_cards
+  has_many :game_player_cards, foreign_key: :player_id
 
   # look for existing user for this game
   # if none, create it
