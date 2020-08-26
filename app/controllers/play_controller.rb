@@ -29,10 +29,7 @@ class PlayController < ApplicationController
     @game_player_card = GamePlayerCard.find params[:game_player_card_id]
     return unless session_id == @game_player_card.game_player.session_id
 
-    @game_player_card.attributes = game_player_card_params
-    @game_player_card.save!
-
-    flash.now[:notice] = "Answers saved at #{DateTime.now.strftime('%I:%M:%S %p')}"
+    persist_entries
 
     @game = @game_player_card.game_player.game
     @player = @game_player_card.game_player
@@ -45,6 +42,12 @@ class PlayController < ApplicationController
   # but overridden in the system test
   def session_id
     session.id.to_s
+  end
+
+  def persist_entries
+    @game_player_card.attributes = game_player_card_params
+    @game_player_card.save!
+    flash.now[:notice] = "Answers saved at #{DateTime.now.strftime('%I:%M:%S %p')}"
   end
 
   # validation
