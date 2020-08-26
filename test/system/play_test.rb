@@ -53,7 +53,6 @@ class PlayTest < ApplicationSystemTestCase
       assert_no_text 'Join'
     end
   end
-#
   test 'enter answers' do
     gp = GamePlayer.create(name: 'User123', game: @game, session_id: 'abcd1234')
     assert_difference('GamePlayer.count', 0) do
@@ -62,7 +61,6 @@ class PlayTest < ApplicationSystemTestCase
       click_on 'Submit Answers'
 
       assert_equal 'icicles', find('#slot_3').value
-      byebug
       assert_equal 'icicles', gp.game_player_cards.first.slot_3
     end
   end

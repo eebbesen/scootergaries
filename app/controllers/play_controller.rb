@@ -40,8 +40,7 @@ class PlayController < ApplicationController
     @game_player_card.attributes = game_player_card_params
     @game_player_card.save!
 
-    flash.now[:notice] = "Answers saved"
-    flash[:notice] = "Answers saved"
+    flash.now[:notice] = 'Answers saved'
   end
 
   private
