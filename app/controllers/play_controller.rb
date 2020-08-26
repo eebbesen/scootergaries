@@ -3,15 +3,14 @@
 class PlayController < ApplicationController
   def join
     @game = Game.where(locator: params[:locator]).first
-    return nil unless join_check
+    return unless join_check
 
     @player = GamePlayer.find_or_make(@game.id, session_id)
+    return unless @player.name
 
-    if @player.name
-      @game_player_card = GamePlayerCard.find_or_make(@player.id, @game.id)
-      render 'play'
-      nil
-    end
+    @game_player_card = GamePlayerCard.find_or_make(@player.id, @game.id)
+    render 'play'
+    nil
   end
 
   def play
